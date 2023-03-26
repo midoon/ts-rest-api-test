@@ -1,0 +1,9 @@
+===================================================================
+PART-1 => KONFIGURASI PROJECT
+===================================================================
+1. make a dir
+2. npm init
+3. install ts & ts-node via npm : [npm i -D typescript ts-node]
+4. inisiasi : npx tsc --init (buat ngegenerate tsconfig.json // jika error, maka buat file tersebut secara manual dan isi konfigurasinya secara manuak)
+5. install nodemon
+6. bikin konfigurasi file nodemon.json
