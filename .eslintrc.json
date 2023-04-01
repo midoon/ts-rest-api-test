@@ -5,7 +5,7 @@
     "node": true
   },
   "extends": "standard-with-typescript",
-  "parser": "@typescript-eslin/parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
