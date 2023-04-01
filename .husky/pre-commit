@@ -7,27 +7,27 @@ echo ' Styling, testing and building your project before commiting';
 npm run check-format ||
 {
     echo 'Prettier Check Failed. Run : npm run format, add changes and try commit again';
-    return false;
+    false;
 }
 
 # Checl ESLint
 npm run check-lint ||
 {
     echo "ESLint Check Failed. Make the required changes listed above, add changes abd try commit again";
-    return false;
+    false;
 }
 
 #Check TSconfig
 npm run check-types ||
 {
     echo "Failed type check. Make the changes require above, add changes abd try commit again";
-    return false;
+    false;
 }
 
 npm run build ||
 {
     echo "Your build failed, viiew error above";
-    return false;
+    false;
 }
 
 echo "Success Commit";
