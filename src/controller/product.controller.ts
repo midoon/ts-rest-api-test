@@ -1,7 +1,17 @@
 import { Request, Response, NextFunction } from 'express'
 import { logger } from '../utils/logger'
 import { createProductValidation } from '../validations/product.validation'
+import { getProductFromDB } from '../services/product.service'
 
+// interface
+interface productInterface {
+    product_id: String
+    name: String
+    price: Number
+    size: String
+}
+
+// routing
 export const createProduct = (req: Request, res: Response, next: NextFunction) => {
   const { error, value } = createProductValidation(req.body)
   if (error) {
@@ -13,21 +23,13 @@ export const createProduct = (req: Request, res: Response, next: NextFunction) =
   return res.status(200).send({ status: true, statusCode: 200, message: 'Add product success', data: value })
 }
 
-export const getProduct = (req: Request, res: Response, next: NextFunction) => {
-    const dataProducts = [
-        {
-            name: 'sepatu',
-            price: 255
-        },
-        {
-            name: 'kaos',
-            price: 666
-        }
-    ]
+export const getProduct = async (req: Request, res: Response, next: NextFunction) => {
+    const dataProducts: any = await getProductFromDB()
+
     const { params: { name } } = req
 
     if (name) {
-        const filterProduct = dataProducts.filter((product) => {
+        const filterProduct = dataProducts.filter((product: productInterface) => {
             if (product.name === name) {
                 return product
             }
@@ -41,6 +43,6 @@ export const getProduct = (req: Request, res: Response, next: NextFunction) => {
         return res.status(200).send({ status: true, statusCode: 200, message: 'get product success', data: filterProduct[0] })
     }
 
-  logger.info('Success GET data product')
-  return res.status(200).send({ status: true, statusCode: 200, message: 'get product success', data: dataProducts })
+    logger.info('Success GET data product')
+    return res.status(200).send({ status: true, statusCode: 200, message: 'get product success', data: dataProducts })
 }

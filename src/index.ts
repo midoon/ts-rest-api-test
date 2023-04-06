@@ -4,6 +4,9 @@ import { logger } from './utils/logger'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 
+// Connect DB auto dijalankan file di connectDB.ts
+import './utils/connectDB'
+
 const app: Application = express()
 const port: Number = 4000
 
