@@ -21,3 +21,18 @@ export const getProductById = async (id: String) => {
 export const addProductToDB = async (payload: productInterface) => {
     return await productModel.create(payload)
 }
+
+export const updateProductById = async (id: String, payload: productInterface) => {
+    return await productModel.findOneAndUpdate(
+        {
+            product_id: id
+        },
+        {
+            $set: payload
+        }
+    )
+}
+
+export const deleteProductById = async (id: String) => {
+    return await productModel.findOneAndDelete({ product_id: id })
+}

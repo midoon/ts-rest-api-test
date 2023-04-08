@@ -1,8 +1,8 @@
 import express, { Application } from 'express'
 import { routes } from './routes/index.'
-import { logger } from './utils/logger'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+// import { logger } from './utils/logger'
 
 // Connect DB auto dijalankan file di connectDB.ts
 import './utils/connectDB'
@@ -25,4 +25,5 @@ app.use((req, res, next) => {
 
 routes(app)
 
-app.listen(port, () => logger.info(`Server is listening on port ${port}`))
+// app.listen(port, () => logger.info(`Server is listening on port ${port}`))
+app.listen(port, () => console.log(`Server is listening on port ${port}`))
