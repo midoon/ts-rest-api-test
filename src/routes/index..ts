@@ -1,8 +1,9 @@
 import { Application, Router } from 'express'
 import { HealthRouter } from './health.route'
 import { ProductRouter } from './product.route'
+import { AuthRouter } from './auth.route'
 
-const _routes: Array<[String, Router]> = [['/health', HealthRouter], ['/product', ProductRouter]]
+const _routes: Array<[String, Router]> = [['/health', HealthRouter], ['/product', ProductRouter], ['/auth', AuthRouter]]
 
 export const routes = (app: Application) => {
   _routes.forEach((route) => {
