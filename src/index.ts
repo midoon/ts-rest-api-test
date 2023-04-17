@@ -6,6 +6,7 @@ import cors from 'cors'
 
 // Connect DB auto dijalankan file di connectDB.ts
 import './utils/connectDB'
+import deserializedToken from './middleware/deserializedToken'
 
 const app: Application = express()
 const port: Number = 4000
@@ -22,7 +23,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', '*')
     next()
 })
-
+app.use(deserializedToken)
 routes(app)
 
 // app.listen(port, () => logger.info(`Server is listening on port ${port}`))
